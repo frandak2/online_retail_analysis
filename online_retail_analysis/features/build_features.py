@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 # Calculation of RFM for Online Retail II dataset
 # the dataset is in df_proces
 def Calculate_RFM(df, labels = False):
-    max_date=df['date'].max() + pd.Timedelta(days=1)
+    max_date=df['InvoiceDate'].max() + pd.Timedelta(days=1)
     df['cost']=df['Quantity']*df['UnitPrice']
     df_rfm = df.groupby(['CustomerID'],as_index=False).agg({'InvoiceDate':lambda x: (max_date-x.max()).days, 
                                                             'cost':'sum',
