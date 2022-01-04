@@ -1,6 +1,6 @@
 # Online_retail_analysis
 
-EDA to custumer segmetation and recomendation system
+project to create model of costumer segmetation and recomendation system
   
 ## Installation guide
 
