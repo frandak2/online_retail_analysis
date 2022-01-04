@@ -2,6 +2,7 @@ from sklearn.cluster import MiniBatchKMeans as KMeans
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
 def train_elbow_cluster(train,start=1,finish=10,each=1):
     wcss = {} #dicionario vacio para guardar los errores
     for i in range(start,finish,each):
@@ -13,3 +14,11 @@ def train_elbow_cluster(train,start=1,finish=10,each=1):
     plt.ylabel('WCSS')
     sns.pointplot(x=list(wcss.keys()), y=list(wcss.values()))
     plt.show()
+
+def Kmeans(train, clusters_number, original_df_rfm):
+    kmeans = KMeans(n_clusters = clusters_number, random_state = 42)
+    # Predict the cluster
+    y_kmeans = kmeans.fit_predict(train)
+    # Create a cluster label column in original dataset
+    df_cluster = original_df_rfm.assign(Cluster = y_kmeans)
+    return df_cluster
